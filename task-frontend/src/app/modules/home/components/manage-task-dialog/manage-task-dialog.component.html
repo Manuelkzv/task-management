@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{ texts.title }}</h1>
+<div mat-dialog-content class="dialog-container">
+  <ng-container *ngIf="data.type == dialogType.Delete; else elseContent">
+    <p>
+      You're about to delete "
+      <span class="dialog-task-title">
+        {{ data.title }}
+      </span>
+      ". Would you like to proceed?
+    </p>
+  </ng-container>
+  <ng-template #elseContent>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="data.title" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="data.status">
+        <mat-option
+          *ngFor="let option of statusOptions"
+          [value]="option.value"
+          >{{ option.label }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </ng-template>
+
+  <div class="dialog-actions">
+    <button mat-raised-button color="basic" [mat-dialog-close]>Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [mat-dialog-close]="data"
+      cdkFocusInitial
+    >
+      {{ texts.okButtonText }}
+    </button>
+  </div>
+</div>

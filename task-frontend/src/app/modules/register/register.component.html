@@ -1,0 +1,82 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      class="form-container"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <mat-form-field>
+        <mat-label>User name</mat-label>
+        <input
+          matInput
+          required
+          type="text"
+          name="username"
+          [(ngModel)]="form.username"
+          minlength="3"
+          maxlength="20"
+          #username="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+        />
+        <mat-error *ngIf="username.errors && f.submitted">
+          <ng-container *ngIf="username.errors['required']">
+            Username is <strong>required</strong>
+          </ng-container>
+          <ng-container *ngIf="username.errors['minlength']">
+            Username must be at least 3 characters
+          </ng-container>
+          <ng-container *ngIf="username.errors['maxlength']">
+            Username must be at most 20 characters
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          required
+          type="password"
+          name="password"
+          [(ngModel)]="form.password"
+          minlength="4"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+        />
+        <mat-error *ngIf="password.errors && f.submitted">
+          <ng-container *ngIf="password.errors['required']">
+            Password is <strong>required</strong>
+          </ng-container>
+          <ng-container *ngIf="password.errors['minlength']">
+            Password must be at least <strong>6 characters</strong>
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="isSuccessful">
+        Sign up
+      </button>
+
+      <span class="form-error" *ngIf="f.submitted && isSignUpFailed">
+        Login failed {{ errorMessage }}
+      </span>
+
+      <span class="form-error" *ngIf="isSuccessful">
+        Your registration is successful!
+      </span>
+    </form>
+
+    <div class="register">
+      <p>Access to your account:</p>
+      <a mat-button routerLink="/login">Login</a>
+    </div>
+  </div>
+</div>

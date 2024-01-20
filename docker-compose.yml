@@ -1,0 +1,30 @@
+version: "3"
+services:
+  app:
+    container_name: node-mongo-app
+    volumes:
+      - .:/app
+    restart: always
+    build:
+      dockerfile: back-end/Dockerfile
+    ports:
+      - "3088:3088"
+    links:
+      - mongo
+  # front:
+  #   container_name: node-mongo-app-front
+  #   volumes:
+  #     - .:/front
+  #   restart: always
+  #   build:
+  #     dockerfile: task-frontend/Dockerfile
+  #   ports:
+  #     - "100:100"
+  #   links:
+  #     - app
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"

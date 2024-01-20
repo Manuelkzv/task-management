@@ -1,0 +1,11 @@
+<mat-toolbar color="primary" class="header">
+  <span>Task Manager 😎</span>
+  <div *ngIf="username" class="header-user_options">
+    <span class="header-user_options-label"> You're logged as: </span>
+    <span class="header-user_options-name"> {{ username }} </span>
+    <button mat-raised-button color="basic" (click)="logout()">Log out</button>
+  </div>
+</mat-toolbar>
+<div class="main">
+  <router-outlet></router-outlet>
+</div>

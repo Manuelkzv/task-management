@@ -1,0 +1,19 @@
+@import "src/styles.scss";
+
+.dialog {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+  }
+
+  &-task-title {
+    font-weight: $font-bold;
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $gap-between-buttons;
+  }
+}

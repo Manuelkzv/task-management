@@ -1,0 +1,30 @@
+@import "src/styles.scss";
+
+.home {
+  &-content {
+    &-actions {
+      display: flex;
+      align-items: baseline;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+  }
+
+  &-empty {
+    margin-top: 10rem;
+    text-align: center;
+  }
+
+  &-create-button {
+    @media screen and (max-width: $min-general-width) {
+      position: fixed;
+      bottom: 2rem;
+      right: 3rem;
+    }
+  }
+
+  &-empty {
+    margin-top: 10rem;
+    text-align: center;
+  }
+}

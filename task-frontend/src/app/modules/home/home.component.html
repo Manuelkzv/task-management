@@ -1,0 +1,36 @@
+<div class="home-content">
+  <div class="home-content-actions">
+    <mat-form-field>
+      <mat-label>Filter table by</mat-label>
+      <mat-select (selectionChange)="filterBy($event)">
+        <mat-option>No filter</mat-option>
+        <mat-option [value]="status.Completed">Completed</mat-option>
+        <mat-option [value]="status.Incomplete">Incomplete</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      (click)="openDialog()"
+      class="home-create-button"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <app-task-table
+    *ngIf="tasks.length; else NoTasks"
+    [data]="tasks"
+  ></app-task-table>
+
+  <ng-template #NoTasks>
+    <div class="home-empty">
+      <h1>You don't have any tasks yet!</h1>
+      <p>Are you ready to start something?</p>
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        Create a task now
+      </button>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,28 @@
+::ng-deep mat-form-field.task-title {
+  width: 100%;
+}
+
+.table {
+  &-container {
+    overflow: auto;
+  }
+
+  &-column {
+    &-title {
+      width: 50%;
+    }
+
+    &-assigned {
+      width: 10rem;
+    }
+
+    &-status {
+      width: 10rem;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: row;
+  }
+}
